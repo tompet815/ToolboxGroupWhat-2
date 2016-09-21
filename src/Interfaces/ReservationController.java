@@ -1,24 +1,41 @@
 package Interfaces;
 
+import DTO.ReservationDetail;
+import DTO.RouteDetail;
+import DTO.RouteIdentifer;
+import DTO.RouteSummary;
+import ETO.FullBookedException;
+import ETO.NoEnoughPlaceException;
+import java.util.List;
 
 public interface ReservationController {
-    
-     /**
-     * get departure times available which match the criteria specified by RouteQuery.
-     * @pre ferries and route should exist.
-     * @throw NoSuchFerryExeption, and NoSuchRouteExeption if they are not found.
-     * @return a collection of RoutePriceSummary. 
+
+    /**
+     * get available routes
+     *
+     * @pre route should exist.
+     * @return a collection of RouteSummary.
      */
-    List<RoutePriceSummary> getAvailableTimes(RouteQuery query);
+    List<RouteSummary> getRoutes();
+
+    /**
+     * get departure times available for the chosen route.
+     *
+     * @pre route should exist.
+     * @return a collection of RouteDetail.
+     */
+    List<RouteDetail> getAvailableTimes(RouteIdentifer routeId);
+
     /**
      * get the reservation detail after submitting reservation.
+     *
      * @pre the session is not timeout
-     * @throw TimeExpiredExeption if the customer don't submit for a long time after query 
-     * @return FerryRouteReservationDetail with a reservation id 
+     * @throw FullBookedException if the desired route on desired date time is
+     * fullbooked.
+     * @throw NoEnoughPlaceExeption if the ferry doesn't have enough places for
+     * desired amount of passengers and vehicles.
+     * @return ReservationDetail
      */
-    FerryRouteReservationDetail submitReservation(FerryRouteReservationDetail route);
+    ReservationDetail reserve(RouteDetail detail) throws FullBookedException, NoEnoughPlaceException;
 
-    
-    
-    
 }
