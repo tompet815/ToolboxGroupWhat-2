@@ -27,9 +27,7 @@ public interface ReservationController {
     List<RouteDetail> getAvailableTimes(RouteIdentifer routeId);
 
     /**
-     * get the reservation detail after submitting reservation.
-     *
-     * @pre the session is not timeout
+     * get the reservation detail after confirming reservation.
      * @throw FullBookedException if the desired route on desired date time is
      * fullbooked.
      * @throw NoEnoughPlaceExeption if the ferry doesn't have enough places for

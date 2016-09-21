@@ -1,9 +1,12 @@
 package DTO;
-public class RouteSummary {
+
+public class RouteSummary extends RouteIdentifer {
+
     private String startingIsland;
     private String destinationIsland;
 
-    public RouteSummary(String startingIsland, String destinationIsland) {
+    public RouteSummary(long id, String startingIsland, String destinationIsland) {
+        super(id);
         this.startingIsland = startingIsland;
         this.destinationIsland = destinationIsland;
     }
@@ -23,6 +26,5 @@ public class RouteSummary {
     public void setDestinationIsland(String destinationIsland) {
         this.destinationIsland = destinationIsland;
     }
-    
-    
+
 }

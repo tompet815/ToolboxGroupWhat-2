@@ -3,12 +3,14 @@ package DTO;
 import java.sql.Date;
 import java.sql.Time;
 
-public class ReservationDetail {
+public class ReservationDetail extends ReservationIdentifer {
+
     private Date date;
     private Time time;
     private String ferryName;
 
-    public ReservationDetail(Date date, Time time, String ferryName) {
+    public ReservationDetail(long id, Date date, Time time, String ferryName) {
+        super(id);
         this.date = date;
         this.time = time;
         this.ferryName = ferryName;
@@ -37,7 +39,5 @@ public class ReservationDetail {
     public void setFerryName(String ferryName) {
         this.ferryName = ferryName;
     }
-    
-    
-    
+
 }
